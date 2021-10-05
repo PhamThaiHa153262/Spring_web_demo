@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
@@ -11,10 +10,22 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 
 	@RequestMapping("home")
-	public ModelAndView home(dragon drg) {
+	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("drg", drg);
+		mv.addObject("drgList", dragonDAO.getAllDragon());
 		mv.setViewName("home");
+		
+		return mv;
+	}
+	
+	@RequestMapping("addDragon")
+	public ModelAndView addDragon(dragon drg) {
+		dragonDAO.addDragon(drg.getD_id(), drg.getD_name(), drg.getD_class());
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("drgList", dragonDAO.getAllDragon());
+		mv.setViewName("home");
+		
 		return mv;
 	}
 }

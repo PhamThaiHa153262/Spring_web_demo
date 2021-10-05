@@ -1,7 +1,12 @@
 package com.example.demo;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class dragon {
 
+	@Id
 	private int d_id;
 	private String d_name;
 	private String d_class;
@@ -22,12 +27,6 @@ public class dragon {
 		return d_class;
 	}
 	public void setD_class(String d_class) {
-		this.d_class = d_class;
-	}
-	public dragon(int d_id, String d_name, String d_class) {
-		super();
-		this.d_id = d_id;
-		this.d_name = d_name;
 		this.d_class = d_class;
 	}
 	
